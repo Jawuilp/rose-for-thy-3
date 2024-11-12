@@ -1,0 +1,403 @@
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Un ramo para ti</title>
+    <style>
+
+     body.hidden {
+            visibility: hidden; /* Oculta todo el cuerpo */
+        }
+
+         body {
+            margin: 0;
+            min-height: 100vh;
+            width: 100vw;
+            background: #080f1a;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            transform-origin: center;
+            zoom: .65;
+        }
+
+        .glass {
+            height: 800px;
+            width: 600px;
+            background: #122139;
+            border-radius: 300px 300px 0px 0px;
+        }
+
+        .glass:before {
+            content: "";
+            height: 40px;
+            width: 40px;
+            transform-origin: center;
+            border: 25px solid #122139;
+            border-radius: 100%;
+            position: absolute;
+            left: 256px;
+            top: -74px;
+        }
+
+        .glass:after {
+            content: "";
+            position: absolute;
+            height: 15px;
+            width: 600px;
+            background: #a52a2a;
+            top: 100%;
+            left: 0%;
+        }
+
+        .shine {
+            width: 26px;
+            height: 330px;
+            background: white;
+            opacity: 0.2;
+            position: absolute;
+            left: 85%;
+            top: 200px;
+            border-radius: 100px;
+            z-index: 10;
+        }
+
+        .shine:before {
+            content: "";
+            width: 26px;
+            height: 40px;
+            position: absolute;
+            background: white;
+            top: 365px;
+            border-radius: 100px;
+        }
+
+        .petals > div {
+            position: absolute;
+            background: #d52d58;
+            width: 85px;
+            height: 120px;
+            top: 200px;
+            transition: all 0.5s ease-out;
+        }
+
+        .petals > div:nth-child(1) {
+            background: #b81b43;
+            left: 300px;
+            border-radius: 50px 0px 50px 0px;
+            transform-origin: bottom left;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: lastPetal 3s ease-in-out forwards;
+        }
+
+        .petals > div:nth-child(2),
+        .petals > div:nth-child(4),
+        .petals > div:nth-child(6) {
+            background: #b81b43;
+            left: 230px;
+            border-radius: 0px 50px 0px 50px;
+            transform-origin: bottom right;
+        }
+
+        .petals > div:nth-child(3),
+        .petals > div:nth-child(5),
+        .petals > div:nth-child(7) {
+            background: #b81b43;
+            left: 300px;
+            border-radius: 50px 0px 50px 0px;
+            transform-origin: bottom left;
+        }
+
+        .petals > div:nth-child(2) {
+            z-index: 5;
+            background: #ab1a3f;
+            top: 218px;
+            height: 130px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: fall 3s ease-in-out forwards;
+        }
+
+        .petals > div:nth-child(3) {
+            z-index: 4;
+            background: #ab1a3f;
+            top: 218px;
+            height: 130px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: fall 3s 0.5s ease-in-out forwards;
+        }
+
+        .petals > div:nth-child(4) {
+            z-index: 3;
+            background: #b81b43;
+            top: 213px;
+            height: 135px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: fall 3s 1s ease-in-out forwards;
+        }
+
+        .petals > div:nth-child(5) {
+            z-index: 2;
+            background: #b81b43;
+            top: 213px;
+            height: 135px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: fall 3s 1.5s ease-in-out forwards;
+        }
+
+        .petals > div:nth-child(6) {
+            z-index: 1;
+            background: #c9204b;
+            top: 200px;
+            height: 130px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .3);
+            animation: fall 3s 2s ease-in-out forwards;
+        }
+
+        .petals > div:nth-child(7) {
+            z-index: 0;
+            background: #c9204b;
+            top: 200px;
+            height: 130px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .3);
+            animation: fall 3s 2.5s ease-in-out forwards;
+        }
+
+        .leaves > div:nth-last-child(1) {
+            position: absolute;
+            width: 55px;
+            height: 30px;
+            background: #338f37;
+            top: 334px;
+            left: 278px;
+            border-radius: 100px;
+        }
+
+        .leaves > div:nth-child(1) {
+            position: absolute;
+            width: 15px;
+            height: 390px;
+            background: #054c05;
+            top: 308px;
+            left: 300px;
+            border-radius: 0 0 100px 100px;
+        }
+
+        .leaves > div:nth-child(2) {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            top: 412px;
+            left: 254px;
+            border-radius: 10px 80px 40px 80px;
+            background: #054c05;
+            transform-origin: bottom;
+            transform: rotate(-30deg);
+            box-shadow: inset 10px 10px #066406;
+        }
+
+        .leaves > div:nth-child(3) {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            top: 360px;
+            left: 300px;
+            border-radius: 80px 1px 80px 40px;
+            background: #054c05;
+            transform-origin: bottom;
+            transform: rotate(30deg);
+            box-shadow: inset -10px 10px #066406;
+        }
+
+        .thorns > div {
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 200px;
+        }
+
+        .thorns > div:nth-child(odd) {
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid #054c05;
+            left: 315px;
+        }
+
+        .thorns > div:nth-child(even) {
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid #054c05;
+            left: 285px;
+        }
+
+        .thorns > div:nth-child(1) {
+            top: 465px;
+        }
+
+        .thorns > div:nth-child(2) {
+            top: 390px;
+        }
+
+        .thorns > div:nth-child(4) {
+            top: 525px;
+        }
+
+      .texto {
+        color: white;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 20px;
+        padding: 0 20px;
+        background-color: rgba(18, 33, 57, 0.9);
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .reset-animation {
+        animation: none !important;
+      }
+
+      audio {
+        display: none;
+      }
+
+      .message-card {
+        background-color: rgba(18, 33, 57, 0.9);
+        border-radius: 1rem;
+        padding: 2rem;
+        max-width: 90%;
+        width: 400px;
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        zoom: 0.8;
+      }
+
+      .message-card h3 {
+        color: #d52d58;
+        margin-bottom: 1rem;
+      }
+
+      .message-card p {
+        color: white;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(90deg) translate(300px, 300px);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          transform: scale(0.7);
+        }
+        .message-card {
+          font-size: 0.9rem;
+          padding: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          transform: scale(0.5);
+        }
+        .message-card {
+          font-size: 1.45rem;
+          padding: 1rem;
+        }
+        .texto {
+          font-size: 46px;
+          text-align: center;
+          position: fixed;
+        }
+      }
+    </style>
+    <script type="module" src="modal.js"></script>
+    <script type="module">
+      const frase = document.querySelector("h4");
+
+      function resetAnimation() {
+        const petals = document.querySelectorAll(
+          ".petals > div:not(:first-child)"
+        );
+        petals.forEach((petal, index) => {
+          petal.classList.add("reset-animation");
+          petal.offsetHeight; // Forzar un reflow
+          petal.classList.remove("reset-animation");
+          petal.style.animationDelay = `${index + 1}s`;
+        });
+        const frases = [
+          "Quiero ser ese alguien en quien piensas cuando escuchas tu canción favorita tal como tu lo eres para mi ❤️",
+          "Eres unica y especial ❤️ ✨",
+          "El Dios de un trillon de estrellas sabe TU nombre ",
+          "Siempre estáre a tu lado,nunca lo olvides......",
+          "Dios tiene un plan más grande, aunque no siempre lo entendamos.",
+          "Te amo en todos los universos ❤️ " ,
+          "No se trata de cuánto tiempo vivimos, sino de cómo vivimos.yo se que puedes ❤️ "];
+        const randomIndex = Math.floor(Math.random() * frases.length);
+        frase.textContent = frases[randomIndex];
+      }
+
+      function startResetInterval(intervalInSeconds) {
+        setInterval(resetAnimation, intervalInSeconds * 1000);
+      }
+
+      // Iniciar el intervalo de reinicio (cada 12 segundos)
+      startResetInterval(12);
+    </script>
+  </head>
+  <body>
+    <div class="message-card">
+      <h3>Para Thiany</h3>
+      <p>
+        Un regalo, una rosa. Sé que son tus favoritas. Siempre que estés triste,
+        ven a este sitio y mira esta flor. Se cansará de decirte lo especial que
+        eres cuando se caiga el último pétalo. <br>¿Y sabes cuándo sucedera eso?<br><b>Jamás💫</b>.
+      </p>
+    </div>
+    <div class="container">
+      <div class="glass">
+        <div class="shine"></div>
+      </div>
+      <div class="leaves">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="petals">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <h4 class="texto">
+        Mi amor por ti durará hasta que caiga el último pétalo ❤️
+      </h4>
+    </div>
+    <audio id="background-music" loop>
+      <source src="musica1.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </body>
+</html>
