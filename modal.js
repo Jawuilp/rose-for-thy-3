@@ -71,6 +71,7 @@
 
     // Función para cerrar el modal
     function closeModal() {
+        const divHidden = document.querySelector('.hidden');
         const modal = document.getElementById('dynamicModal');
         if (modal) {
             modal.style.opacity = '0';
@@ -80,7 +81,7 @@
             }, 500);
         }
             audioElement.play();
-            document.body.classList.remove('hidden');
+            divHidden.classList.remove('hidden');
     }
 
     const audioElement = document.getElementById('background-music');
