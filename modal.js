@@ -29,7 +29,7 @@
         `;
 
         const title = document.createElement('h2');
-        title.textContent = 'Bienvenida Thiany 🙂'
+        title.textContent = 'Bienvenida Andrea 🙂'
         title.style.cssText = `
             color: #d52d58;
             font-size: 1.5rem;
@@ -37,7 +37,7 @@
         `;
 
         const message = document.createElement('p');
-        message.textContent = 'Por favor da click en el botón de continuar y si no eres Thiany puedes igual darle click y ver lo que prepare para ella, espero que te guste,lo he hecho con mucho❤ para ti ✨';
+        message.textContent = 'Por favor da click en el botón de continuar y si no eres Andrea puedes igual darle click y ver lo que prepare para ella, espero que te guste,lo he hecho con mucho❤ para ti ✨';
         message.style.cssText = `
             color: white;
             margin-bottom: 1.5rem;
